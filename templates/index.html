@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Cafes</title>
+</head>
+<body>
+<ul>
+{% for i in cafes%}
+    <li>{{i.name}}<br>{{i.location}}{{i.map_url}}<br>{{i.img_url}}<br>{{i.location}}<br>{{i.has_sockets}}<br>{{i.has_toilet}}<br>{{i.has_wifi}}<br>{{i.can_take_calls}}<br>{{i.seats}}<br>{{i.coffee_price}}<br><br></li>
+
+    {%endfor%}
+    </ul>
+</body>
+</html>

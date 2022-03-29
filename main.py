@@ -2,9 +2,10 @@ from flask import Flask, render_template, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///new-books-collection.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///cafes.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
 
 class Cafe(db.Model):
     __tablename__ = "cafe"
@@ -23,7 +24,13 @@ class Cafe(db.Model):
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    cafes = Cafe.query.all()
+    return render_template("index.html", cafes=cafes)
+
+@app.route('/<int:cafe_id>')
+def cafe_page(cafe_id):
+    cafe=Cafe.query.filter_by()
+    return render_template("cafe.html", cafe=cafe)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
